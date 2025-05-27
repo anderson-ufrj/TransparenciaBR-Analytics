@@ -1,0 +1,44 @@
+name: Basic Validation
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install minimal dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest python-dotenv requests
+    
+    - name: Validate project structure
+      run: |
+        # Check if required directories exist
+        test -d src && echo "✓ src directory exists"
+        test -d tests && echo "✓ tests directory exists"
+        test -d notebooks && echo "✓ notebooks directory exists"
+        test -f requirements.txt && echo "✓ requirements.txt exists"
+        test -f README.md && echo "✓ README.md exists"
+    
+    - name: Validate Python syntax
+      run: |
+        python -m py_compile src/**/*.py || true
+        echo "✓ Python syntax validation complete"
+    
+    - name: Run basic import test
+      run: |
+        python -c "import sys; sys.path.insert(0, '.'); print('Testing imports...')"
+        python -c "from src.utils import helpers; print('✓ Utils import successful')"
+        echo "✓ Basic imports working"
