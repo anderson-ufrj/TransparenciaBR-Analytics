@@ -176,7 +176,7 @@ with st.sidebar:
     # Imagem de Brasília
     st.markdown("""
     <div style="text-align: center; margin-bottom: 24px; padding: 12px; background: #F8FAFC; border-radius: 16px; border: 1px solid #E5E7EB;">
-        <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=600&h=350&fit=crop&crop=center" 
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Congresso_Nacional_Brasil_Brasilia.jpg/640px-Congresso_Nacional_Brasil_Brasilia.jpg" 
              width="100%" style="border-radius: 12px; box-shadow: 0 6px 16px rgba(0,0,0,0.15);">
         <p style="margin-top: 12px; color: #374151; font-size: 0.875rem; font-weight: 600;">
             🏛️ Congresso Nacional - Brasília
