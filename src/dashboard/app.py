@@ -32,7 +32,7 @@ st.markdown("""
     /* Tema geral */
     .main {
         padding-top: 2rem;
-        background-color: #FAFAFA;
+        background-color: #FFFFFF;
         font-family: 'Inter', sans-serif;
     }
     
@@ -44,23 +44,23 @@ st.markdown("""
     
     /* Métricas com cores do Brasil */
     div[data-testid="metric-container"] {
-        background: linear-gradient(135deg, #FFFFFF 0%, #F0F9FF 100%);
-        border: 1px solid #E0F2FE;
+        background: #FFFFFF;
+        border: 2px solid #E5E7EB;
         padding: 20px;
         border-radius: 12px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         transition: all 0.3s ease;
     }
     
     div[data-testid="metric-container"]:hover {
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        border-color: #60A5FA;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        border-color: #059669;
     }
     
     /* Títulos verdes */
     h1, h2, h3 {
-        color: #047857;
+        color: #065F46;
         font-weight: 600;
     }
     
@@ -175,7 +175,7 @@ with st.sidebar:
     # Imagem de Brasília
     st.markdown("""
     <div style="text-align: center; margin-bottom: 20px;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Congresso_Nacional_03_2006.jpg/640px-Congresso_Nacional_03_2006.jpg" 
+        <img src="https://images.unsplash.com/photo-1544966503-7adceed8c9d4?w=640&h=400&fit=crop&crop=center" 
              width="100%" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
         <p style="margin-top: 8px; color: #6B7280; font-size: 0.875rem;">Congresso Nacional - Brasília</p>
     </div>
