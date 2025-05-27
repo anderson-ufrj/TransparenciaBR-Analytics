@@ -367,6 +367,11 @@ with st.sidebar:
             "key": "configuracoes",
             "desc": "Preferências e API",
             "section": "avancado"
+        },
+        "🎓 IFSULDEMINAS": {
+            "key": "ifsuldeminas",
+            "desc": "Análise dedicada ao Instituto",
+            "section": "especial"
         }
     }
     
@@ -374,7 +379,8 @@ with st.sidebar:
     sections = {
         "principal": "Dashboard Principal",
         "gestao": "Gestão e Controle",
-        "avancado": "Recursos Avançados"
+        "avancado": "Recursos Avançados",
+        "especial": "Seções Especiais"
     }
     
     # Inicializar página no session state
@@ -573,6 +579,10 @@ elif page == "📊 Monitor de Coleta":
 elif page == "⚙️ Configurações":
     from src.dashboard.pages.configuracoes import render_configuracoes_page
     render_configuracoes_page()
+
+elif page == "🎓 IFSULDEMINAS":
+    from src.dashboard.pages.ifsuldeminas import render_ifsuldeminas_page
+    render_ifsuldeminas_page()
 
 # Footer
 st.markdown("---")
