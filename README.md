@@ -1,5 +1,7 @@
 # TransparenciaBR-Analytics 🇧🇷
 
+🚀 **[Acessar Dashboard Online](https://transparenciabr-anderson.streamlit.app/)** | 📚 **[Documentação](https://anderson-ufrj.github.io/TransparenciaBR-Analytics/)**
+
 [![Tests](https://github.com/anderson-ufrj/TransparenciaBR-Analytics/actions/workflows/tests.yml/badge.svg)](https://github.com/anderson-ufrj/TransparenciaBR-Analytics/actions/workflows/tests.yml)
 [![Basic Validation](https://github.com/anderson-ufrj/TransparenciaBR-Analytics/actions/workflows/basic-validation.yml/badge.svg)](https://github.com/anderson-ufrj/TransparenciaBR-Analytics/actions/workflows/basic-validation.yml)
 [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
@@ -252,9 +254,10 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:andersonhs90@hotmail.com)
 
 **🔗 Links do Projeto:**
+- 🚀 [Dashboard Online](https://transparenciabr-anderson.streamlit.app/)
 - 🌐 [Repositório GitHub](https://github.com/anderson-ufrj/TransparenciaBR-Analytics)
-- 📊 [Dashboard Demo](https://github.com/anderson-ufrj/TransparenciaBR-Analytics#dashboard)
-- 📚 [Documentação Completa](https://github.com/anderson-ufrj/TransparenciaBR-Analytics/tree/main/docs)
+- 📚 [Documentação Completa](https://anderson-ufrj.github.io/TransparenciaBR-Analytics/)
+- 📊 [Landing Page](https://anderson-ufrj.github.io/TransparenciaBR-Analytics/)
 
 ---
 

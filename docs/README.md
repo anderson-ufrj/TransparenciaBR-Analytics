@@ -9,6 +9,7 @@ Bem-vindo à documentação completa do TransparenciaBR Analytics! Este projeto 
 | Documento | Descrição | Nível |
 |-----------|-----------|-------|
 | [README Principal](../README.md) | Visão geral do projeto e início rápido | Iniciante |
+| [Dashboard Online](https://transparenciabr-anderson.streamlit.app/) | Acesse o dashboard ao vivo | Iniciante |
 | [Guia do Dashboard](DASHBOARD.md) | Como usar o dashboard interativo | Iniciante |
 | [Exemplos de Uso](EXAMPLES.md) | Casos de uso práticos e exemplos | Intermediário |
 
@@ -26,6 +27,7 @@ Bem-vindo à documentação completa do TransparenciaBR Analytics! Este projeto 
 | Documento | Descrição | Nível |
 |-----------|-----------|-------|
 | [Guia de Deploy](DEPLOY.md) | Deploy em produção | Avançado |
+| [Hospedagem Gratuita](HOSTING.md) | Como hospedar online gratuitamente | Intermediário |
 | [Monitoramento](MONITORING.md) | Configuração de monitoramento | Avançado |
 | [Segurança](SECURITY.md) | Práticas de segurança | Avançado |
 
@@ -88,8 +90,8 @@ Quer usar os dados para análises:
 
 ### Para Usuários
 ```bash
-# 1. Acesse o dashboard online (se disponível)
-https://transparencia-analytics.exemplo.com
+# 1. Acesse o dashboard online
+https://transparenciabr-anderson.streamlit.app/
 
 # 2. Ou execute localmente
 git clone https://github.com/anderson-ufrj/TransparenciaBR-Analytics.git
@@ -132,10 +134,12 @@ aws ecs update-service --cluster prod --service transparencia --force-new-deploy
 
 | Documento | Status | Última Atualização | Versão |
 |-----------|--------|--------------------|---------|
-| [README Principal](../README.md) | ✅ Completo | 2024-12-01 | v1.0 |
-| [API](API.md) | ✅ Completo | 2024-12-01 | v1.0 |
-| [Desenvolvimento](DEVELOPMENT.md) | ✅ Completo | 2024-12-01 | v1.0 |
-| [Deploy](DEPLOY.md) | ✅ Completo | 2024-12-01 | v1.0 |
+| [README Principal](../README.md) | ✅ Completo | 2024-05-27 | v1.1 |
+| [API](API.md) | ✅ Completo | 2024-05-27 | v1.0 |
+| [Desenvolvimento](DEVELOPMENT.md) | ✅ Completo | 2024-05-27 | v1.0 |
+| [Deploy](DEPLOY.md) | ✅ Completo | 2024-05-27 | v1.0 |
+| [Hospedagem](HOSTING.md) | ✅ Completo | 2024-05-27 | v1.0 |
+| [Dashboard Online](https://transparenciabr-anderson.streamlit.app/) | ✅ Ao Vivo | 2024-05-27 | v1.0 |
 | [Dashboard](DASHBOARD.md) | 🔄 Em Progresso | - | - |
 | [Exemplos](EXAMPLES.md) | 📋 Planejado | - | - |
 | [Arquitetura](ARCHITECTURE.md) | 📋 Planejado | - | - |

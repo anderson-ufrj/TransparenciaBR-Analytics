@@ -6,8 +6,8 @@
     <title>TransparenciaBR Analytics - Análise de Dados Públicos</title>
     <meta name="description" content="Plataforma de análise inteligente de dados do Portal da Transparência do Governo Federal Brasileiro">
     
-    <!-- Redirecionar automaticamente para o dashboard (descomente quando tiver o link) -->
-    <!-- <meta http-equiv="refresh" content="3; url=https://transparenciabr-analytics.streamlit.app/"> -->
+    <!-- Redirecionar automaticamente para o dashboard -->
+    <meta http-equiv="refresh" content="3; url=https://transparenciabr-anderson.streamlit.app/">
     
     <!-- Open Graph / Social Media -->
     <meta property="og:title" content="TransparenciaBR Analytics">
@@ -232,9 +232,9 @@
             <p class="subtitle">Análise inteligente de dados públicos do Portal da Transparência</p>
             
             <div class="buttons">
-                <a href="#" class="button" onclick="alert('O dashboard será hospedado em breve no Streamlit Cloud!')">
+                <a href="https://transparenciabr-anderson.streamlit.app/" class="button">
                     🚀 Acessar Dashboard
-                    <!-- <span class="loading"></span> -->
+                    <span class="loading"></span>
                 </a>
                 <a href="https://github.com/anderson-ufrj/TransparenciaBR-Analytics" class="button secondary">
                     📂 Ver no GitHub
@@ -310,18 +310,21 @@
     </div>
     
     <script>
-        // Adicione aqui o link do Streamlit quando estiver pronto
-        const streamlitUrl = ''; // 'https://transparenciabr-analytics.streamlit.app/'
+        // Link do dashboard no Streamlit
+        const streamlitUrl = 'https://transparenciabr-anderson.streamlit.app/';
         
-        if (streamlitUrl) {
-            // Redirecionar após 3 segundos
-            setTimeout(() => {
-                window.location.href = streamlitUrl;
-            }, 3000);
+        // Mostrar indicador de carregamento
+        document.addEventListener('DOMContentLoaded', function() {
+            const loadingElements = document.querySelectorAll('.loading');
+            loadingElements.forEach(el => el.style.display = 'inline-block');
             
-            // Mostrar loading
-            document.querySelector('.loading').style.display = 'inline-block';
-        }
+            // Adicionar mensagem de redirecionamento
+            const header = document.querySelector('header');
+            const redirectMsg = document.createElement('p');
+            redirectMsg.style.cssText = 'margin-top: 20px; color: #059669; font-weight: 500;';
+            redirectMsg.innerHTML = '🔄 Redirecionando para o dashboard em 3 segundos...';
+            header.appendChild(redirectMsg);
+        });
     </script>
 </body>
 </html>
