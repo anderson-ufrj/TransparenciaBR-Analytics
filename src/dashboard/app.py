@@ -23,42 +23,164 @@ st.set_page_config(
     }
 )
 
-# CSS customizado
+# CSS customizado com tema Brasil
 st.markdown("""
 <style>
+    /* Importar fonte */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    
+    /* Tema geral */
     .main {
         padding-top: 2rem;
+        background-color: #FAFAFA;
+        font-family: 'Inter', sans-serif;
     }
-    .stMetric {
-        background-color: #f0f2f6;
-        padding: 15px;
-        border-radius: 10px;
-        border-left: 5px solid #1f77b4;
-    }
+    
+    /* Sidebar estilizada */
     .css-1d391kg {
-        padding-top: 3.5rem;
+        background-color: #FFFFFF;
+        border-right: 2px solid #E5E7EB;
     }
+    
+    /* Métricas com cores do Brasil */
     div[data-testid="metric-container"] {
-        background-color: rgba(28, 131, 225, 0.1);
-        border: 1px solid rgba(28, 131, 225, 0.1);
-        padding: 5% 5% 5% 10%;
-        border-radius: 5px;
-        color: rgb(30, 103, 119);
-        overflow-wrap: break-word;
+        background: linear-gradient(135deg, #FFFFFF 0%, #F0F9FF 100%);
+        border: 1px solid #E0F2FE;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+    
+    div[data-testid="metric-container"]:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        border-color: #60A5FA;
+    }
+    
+    /* Títulos verdes */
+    h1, h2, h3 {
+        color: #047857;
+        font-weight: 600;
+    }
+    
+    /* Botões estilo Brasil */
+    .stButton > button {
+        background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    
+    .stButton > button:hover {
+        background: linear-gradient(135deg, #047857 0%, #065F46 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+    }
+    
+    /* Cards informativos */
+    .info-card {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        border: 1px solid #E5E7EB;
+        margin-bottom: 20px;
+    }
+    
+    /* Bandeira do Brasil como background sutil */
+    .brazil-bg {
+        background-image: 
+            linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)),
+            url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/2560px-Flag_of_Brazil.svg.png');
+        background-size: cover;
+        background-position: center;
+        padding: 40px;
+        border-radius: 20px;
+        margin-bottom: 30px;
+    }
+    
+    /* Alertas customizados */
+    .stAlert {
+        border-radius: 8px;
+        border-left: 4px solid;
+    }
+    
+    /* Tabs */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 8px;
+        background-color: #F3F4F6;
+        padding: 4px;
+        border-radius: 12px;
+    }
+    
+    .stTabs [data-baseweb="tab"] {
+        border-radius: 8px;
+        padding: 8px 16px;
+        background-color: transparent;
+    }
+    
+    .stTabs [aria-selected="true"] {
+        background-color: white;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Selectbox estilizado */
+    .stSelectbox > div > div {
+        background-color: white;
+        border-radius: 8px;
+        border: 1px solid #E5E7EB;
+    }
+    
+    /* DataFrame estilizado */
+    .dataframe {
+        border: none !important;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    /* Links verdes */
+    a {
+        color: #059669;
+        text-decoration: none;
+    }
+    
+    a:hover {
+        color: #047857;
+        text-decoration: underline;
     }
 </style>
 """, unsafe_allow_html=True)
 
-# Header com logo e título
-col1, col2 = st.columns([1, 5])
-with col1:
-    st.markdown("# 🇧🇷")
-with col2:
-    st.title("TransparenciaBR Analytics")
-    st.markdown("**Análise inteligente de dados públicos do Portal da Transparência**")
+# Header com bandeira do Brasil
+st.markdown("""
+<div class="brazil-bg">
+    <div style="display: flex; align-items: center; gap: 20px;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/640px-Flag_of_Brazil.svg.png" 
+             width="100" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+        <div>
+            <h1 style="margin: 0; color: #047857; font-size: 2.5rem;">TransparenciaBR Analytics</h1>
+            <p style="margin: 0; color: #059669; font-size: 1.2rem; font-weight: 500;">
+                Análise inteligente de dados públicos do Portal da Transparência
+            </p>
+        </div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
 # Barra lateral
 with st.sidebar:
+    # Imagem de Brasília
+    st.markdown("""
+    <div style="text-align: center; margin-bottom: 20px;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Congresso_Nacional_03_2006.jpg/640px-Congresso_Nacional_03_2006.jpg" 
+             width="100%" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+        <p style="margin-top: 8px; color: #6B7280; font-size: 0.875rem;">Congresso Nacional - Brasília</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
     st.markdown("## 📊 Navegação")
     
     # Menu de navegação
@@ -155,10 +277,21 @@ elif page == "⚙️ Configurações":
 
 # Footer
 st.markdown("---")
-col1, col2, col3 = st.columns(3)
-with col1:
-    st.caption("Desenvolvido por Anderson Henrique")
-with col2:
-    st.caption("Dados: Portal da Transparência")
-with col3:
-    st.caption("v0.1.0 - 2025")
+st.markdown("""
+<div style="background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%); padding: 30px; border-radius: 16px; margin-top: 50px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Coat_of_arms_of_Brazil.svg/180px-Coat_of_arms_of_Brazil.svg.png" 
+                 width="50" style="opacity: 0.8;">
+            <div>
+                <p style="margin: 0; font-weight: 600; color: #047857;">TransparenciaBR Analytics</p>
+                <p style="margin: 0; font-size: 0.875rem; color: #6B7280;">Transparência e Dados Abertos</p>
+            </div>
+        </div>
+        <div style="text-align: right;">
+            <p style="margin: 0; font-size: 0.875rem; color: #6B7280;">Desenvolvido por Anderson Henrique</p>
+            <p style="margin: 0; font-size: 0.875rem; color: #6B7280;">Dados: Portal da Transparência • v0.1.0</p>
+        </div>
+    </div>
+</div>
+""", unsafe_allow_html=True)

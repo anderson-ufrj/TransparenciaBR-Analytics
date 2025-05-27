@@ -13,17 +13,41 @@ import json
 def render_home_page():
     """Renderiza a página inicial do dashboard."""
     
-    # Header
-    st.markdown("## 🏠 Visão Geral")
-    st.markdown("Bem-vindo ao TransparenciaBR Analytics! Este dashboard fornece insights sobre os gastos públicos do Governo Federal.")
+    # Header com card estilizado
+    st.markdown("""
+    <div style="background: linear-gradient(135deg, #FFFFFF 0%, #F0F9FF 100%); 
+                padding: 30px; 
+                border-radius: 16px; 
+                box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+                margin-bottom: 30px;
+                border: 1px solid #E0F2FE;">
+        <h2 style="color: #047857; margin-top: 0;">🏠 Visão Geral</h2>
+        <p style="color: #374151; font-size: 1.1rem; margin-bottom: 0;">
+            Bem-vindo ao <strong style="color: #059669;">TransparenciaBR Analytics</strong>! 
+            Este dashboard fornece insights detalhados sobre os gastos públicos do Governo Federal Brasileiro,
+            promovendo transparência e facilitando o controle social.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
     
-    # Métricas principais
-    st.markdown("### 📊 Métricas Principais")
+    # Métricas principais com ícones
+    st.markdown("""
+    <h3 style="color: #047857; margin-bottom: 20px;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Bandeira_do_Brasil.png/30px-Bandeira_do_Brasil.png" 
+             style="vertical-align: middle; margin-right: 10px;">
+        Métricas Principais
+    </h3>
+    """, unsafe_allow_html=True)
     
     col1, col2, col3, col4 = st.columns(4)
     
-    # Métricas mockadas (substituir por dados reais quando disponível)
+    # Métricas mockadas com estilo brasileiro
     with col1:
+        st.markdown("""
+        <div style="text-align: center;">
+            <div style="font-size: 2.5rem; color: #059669;">📑</div>
+        </div>
+        """, unsafe_allow_html=True)
         st.metric(
             label="Total de Contratos",
             value="12.456",
@@ -32,6 +56,11 @@ def render_home_page():
         )
     
     with col2:
+        st.markdown("""
+        <div style="text-align: center;">
+            <div style="font-size: 2.5rem; color: #EAB308;">💰</div>
+        </div>
+        """, unsafe_allow_html=True)
         st.metric(
             label="Valor Total (2024)",
             value="R$ 45,8 Bi",
@@ -40,6 +69,11 @@ def render_home_page():
         )
     
     with col3:
+        st.markdown("""
+        <div style="text-align: center;">
+            <div style="font-size: 2.5rem; color: #3B82F6;">🏢</div>
+        </div>
+        """, unsafe_allow_html=True)
         st.metric(
             label="Fornecedores Ativos",
             value="8.923",
@@ -48,6 +82,11 @@ def render_home_page():
         )
     
     with col4:
+        st.markdown("""
+        <div style="text-align: center;">
+            <div style="font-size: 2.5rem; color: #059669;">🏛️</div>
+        </div>
+        """, unsafe_allow_html=True)
         st.metric(
             label="Órgãos Monitorados",
             value="387",
@@ -81,12 +120,23 @@ def render_home_page():
             markers=True
         )
         
+        fig.update_traces(
+            line_color='#059669',
+            line_width=3,
+            marker_size=8,
+            marker_color='#047857'
+        )
+        
         fig.update_layout(
             showlegend=False,
             height=300,
             xaxis_title="",
             yaxis_title="Bilhões (R$)",
-            hovermode='x unified'
+            hovermode='x unified',
+            plot_bgcolor='rgba(0,0,0,0)',
+            paper_bgcolor='rgba(0,0,0,0)',
+            xaxis=dict(gridcolor='rgba(229, 231, 235, 0.5)'),
+            yaxis=dict(gridcolor='rgba(229, 231, 235, 0.5)')
         )
         
         st.plotly_chart(fig, use_container_width=True)
@@ -107,9 +157,16 @@ def render_home_page():
             x='Valor',
             y='Órgão',
             orientation='h',
-            title="",
-            color='Valor',
-            color_continuous_scale='Blues'
+            title=""
+        )
+        
+        # Cores gradientes verde e amarelo (cores do Brasil)
+        colors = ['#059669', '#10B981', '#34D399', '#6EE7B7', '#A7F3D0']
+        
+        fig.update_traces(
+            marker_color=colors,
+            marker_line_color='#047857',
+            marker_line_width=1
         )
         
         fig.update_layout(
@@ -117,7 +174,10 @@ def render_home_page():
             height=300,
             xaxis_title="Bilhões (R$)",
             yaxis_title="",
-            coloraxis_showscale=False
+            plot_bgcolor='rgba(0,0,0,0)',
+            paper_bgcolor='rgba(0,0,0,0)',
+            xaxis=dict(gridcolor='rgba(229, 231, 235, 0.5)'),
+            yaxis=dict(gridcolor='rgba(229, 231, 235, 0.5)')
         )
         
         st.plotly_chart(fig, use_container_width=True)
@@ -186,17 +246,45 @@ def render_home_page():
     
     # Alertas e notificações
     st.markdown("---")
-    st.markdown("### 🔔 Alertas Recentes")
+    st.markdown("""
+    <h3 style="color: #047857; margin-bottom: 20px;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/30px-Flag_of_Brazil.svg.png" 
+             style="vertical-align: middle; margin-right: 10px;">
+        Alertas e Notificações
+    </h3>
+    """, unsafe_allow_html=True)
     
     col1, col2 = st.columns(2)
     
     with col1:
-        st.info("💡 **Novo padrão detectado**: Aumento de 15% nos contratos de TI no último mês")
-        st.warning("⚠️ **Atenção**: 3 fornecedores com contratos vencendo esta semana")
+        st.markdown("""
+        <div style="background: #EFF6FF; border-left: 4px solid #3B82F6; padding: 15px; border-radius: 8px; margin-bottom: 10px;">
+            <strong style="color: #1E40AF;">💡 Novo padrão detectado</strong><br>
+            <span style="color: #3730A3;">Aumento de 15% nos contratos de TI no último mês</span>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div style="background: #FEF3C7; border-left: 4px solid #F59E0B; padding: 15px; border-radius: 8px;">
+            <strong style="color: #D97706;">⚠️ Atenção</strong><br>
+            <span style="color: #92400E;">3 fornecedores com contratos vencendo esta semana</span>
+        </div>
+        """, unsafe_allow_html=True)
     
     with col2:
-        st.success("✅ **Coleta concluída**: 45.678 novos registros de pagamentos processados")
-        st.error("❌ **Erro na coleta**: Endpoint de servidores indisponível há 2 dias")
+        st.markdown("""
+        <div style="background: #D1FAE5; border-left: 4px solid #10B981; padding: 15px; border-radius: 8px; margin-bottom: 10px;">
+            <strong style="color: #047857;">✅ Coleta concluída</strong><br>
+            <span style="color: #065F46;">45.678 novos registros de pagamentos processados</span>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div style="background: #FEE2E2; border-left: 4px solid #EF4444; padding: 15px; border-radius: 8px;">
+            <strong style="color: #DC2626;">❌ Erro na coleta</strong><br>
+            <span style="color: #991B1B;">Endpoint de servidores indisponível há 2 dias</span>
+        </div>
+        """, unsafe_allow_html=True)
     
     # Quick Actions
     st.markdown("---")
