@@ -6,6 +6,7 @@ Dashboard interativo para análise de dados do Portal da Transparência
 import streamlit as st
 import sys
 from pathlib import Path
+import base64
 
 # Adicionar o diretório raiz ao path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
@@ -154,10 +155,19 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Header com bandeira do Brasil
-st.markdown("""
+# Carregar bandeira do Brasil local
+flag_path = Path(__file__).parent.parent / "images" / "bandeira-brasil.png"
+if flag_path.exists():
+    with open(flag_path, "rb") as f:
+        flag_data = base64.b64encode(f.read()).decode()
+    flag_src = f"data:image/png;base64,{flag_data}"
+else:
+    flag_src = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/640px-Flag_of_Brazil.svg.png"
+
+st.markdown(f"""
 <div class="brazil-bg">
     <div style="display: flex; align-items: center; gap: 24px;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/640px-Flag_of_Brazil.svg.png" 
+        <img src="{flag_src}" 
              width="120" style="border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.15); border: 2px solid #FFFFFF;">
         <div>
             <h1 style="margin: 0; color: #064E3B; font-size: 2.8rem; font-weight: 800; letter-spacing: -0.02em;">
@@ -174,9 +184,19 @@ st.markdown("""
 # Barra lateral
 with st.sidebar:
     # Imagem de Brasília
-    st.markdown("""
+    # Carregar imagem local
+    img_path = Path(__file__).parent.parent / "images" / "brasilia.jpg"
+    if img_path.exists():
+        with open(img_path, "rb") as f:
+            img_data = base64.b64encode(f.read()).decode()
+        img_src = f"data:image/jpeg;base64,{img_data}"
+    else:
+        # Fallback para URL online
+        img_src = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Congresso_Nacional_Brasil_Brasilia.jpg/640px-Congresso_Nacional_Brasil_Brasilia.jpg"
+    
+    st.markdown(f"""
     <div style="text-align: center; margin-bottom: 24px; padding: 12px; background: #F8FAFC; border-radius: 16px; border: 1px solid #E5E7EB;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Congresso_Nacional_Brasil_Brasilia.jpg/640px-Congresso_Nacional_Brasil_Brasilia.jpg" 
+        <img src="{img_src}" 
              width="100%" style="border-radius: 12px; box-shadow: 0 6px 16px rgba(0,0,0,0.15);">
         <p style="margin-top: 12px; color: #374151; font-size: 0.875rem; font-weight: 600;">
             🏛️ Congresso Nacional - Brasília
