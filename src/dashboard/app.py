@@ -24,6 +24,30 @@ st.set_page_config(
     }
 )
 
+# CSS para esconder a navegação de páginas padrão do Streamlit
+st.markdown("""
+<style>
+    /* Esconder navegação de páginas padrão */
+    [data-testid="stSidebarNav"] {
+        display: none;
+    }
+    
+    /* Remover padding extra do sidebar */
+    .css-1d391kg {
+        padding-top: 1rem;
+    }
+    
+    /* Esconder o header padrão de páginas */
+    .css-1avcm0n {
+        display: none;
+    }
+    
+    .css-18e3th9 {
+        padding-top: 0;
+    }
+</style>
+""", unsafe_allow_html=True)
+
 # CSS customizado com tema Brasil
 st.markdown("""
 <style>
@@ -511,43 +535,43 @@ with st.sidebar:
 # Conteúdo principal baseado na página selecionada
 if page == "🏠 Início":
     # Importar página inicial
-    from pages.home import render_home_page
+    from src.dashboard.pages.home import render_home_page
     render_home_page()
 
 elif page == "📈 Análise de Gastos":
-    from pages.gastos import render_gastos_page
+    from src.dashboard.pages.gastos import render_gastos_page
     render_gastos_page()
 
 elif page == "🏢 Órgãos Públicos":
-    from pages.orgaos import render_orgaos_page
+    from src.dashboard.pages.orgaos import render_orgaos_page
     render_orgaos_page()
 
 elif page == "📑 Contratos":
-    from pages.contratos import render_contratos_page
+    from src.dashboard.pages.contratos import render_contratos_page
     render_contratos_page()
 
 elif page == "💰 Pagamentos":
-    from pages.pagamentos import render_pagamentos_page
+    from src.dashboard.pages.pagamentos import render_pagamentos_page
     render_pagamentos_page()
 
 elif page == "🏆 Licitações":
-    from pages.licitacoes import render_licitacoes_page
+    from src.dashboard.pages.licitacoes import render_licitacoes_page
     render_licitacoes_page()
 
 elif page == "👥 Fornecedores":
-    from pages.fornecedores import render_fornecedores_page
+    from src.dashboard.pages.fornecedores import render_fornecedores_page
     render_fornecedores_page()
 
 elif page == "🔍 Detecção de Anomalias":
-    from pages.anomalias import render_anomalias_page
+    from src.dashboard.pages.anomalias import render_anomalias_page
     render_anomalias_page()
 
 elif page == "📊 Monitor de Coleta":
-    from pages.monitor import render_monitor_page
+    from src.dashboard.pages.monitor import render_monitor_page
     render_monitor_page()
 
 elif page == "⚙️ Configurações":
-    from pages.configuracoes import render_configuracoes_page
+    from src.dashboard.pages.configuracoes import render_configuracoes_page
     render_configuracoes_page()
 
 # Footer
