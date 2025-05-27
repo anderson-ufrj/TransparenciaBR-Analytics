@@ -1,10 +1,23 @@
 # TransparenciaBR-Analytics 🇧🇷
 
+[![Tests](https://github.com/anderson-ufrj/TransparenciaBR-Analytics/actions/workflows/tests.yml/badge.svg)](https://github.com/anderson-ufrj/TransparenciaBR-Analytics/actions/workflows/tests.yml)
+[![Basic Validation](https://github.com/anderson-ufrj/TransparenciaBR-Analytics/actions/workflows/basic-validation.yml/badge.svg)](https://github.com/anderson-ufrj/TransparenciaBR-Analytics/actions/workflows/basic-validation.yml)
 [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![API](https://img.shields.io/badge/API-Portal%20da%20Transparência-orange.svg)](https://api.portaldatransparencia.gov.br/)
+[![GitHub last commit](https://img.shields.io/github/last-commit/anderson-ufrj/TransparenciaBR-Analytics)](https://github.com/anderson-ufrj/TransparenciaBR-Analytics/commits/main)
+[![GitHub issues](https://img.shields.io/github/issues/anderson-ufrj/TransparenciaBR-Analytics)](https://github.com/anderson-ufrj/TransparenciaBR-Analytics/issues)
+[![GitHub stars](https://img.shields.io/github/stars/anderson-ufrj/TransparenciaBR-Analytics?style=social)](https://github.com/anderson-ufrj/TransparenciaBR-Analytics/stargazers)
 
 Uma plataforma completa para análise de dados do Portal da Transparência do Governo Federal Brasileiro, com foco em Machine Learning e visualizações interativas.
+
+## 📊 Status do Projeto
+
+![GitHub repo size](https://img.shields.io/github/repo-size/anderson-ufrj/TransparenciaBR-Analytics)
+![Lines of code](https://img.shields.io/tokei/lines/github/anderson-ufrj/TransparenciaBR-Analytics)
+![GitHub language count](https://img.shields.io/github/languages/count/anderson-ufrj/TransparenciaBR-Analytics)
+![GitHub top language](https://img.shields.io/github/languages/top/anderson-ufrj/TransparenciaBR-Analytics)
 
 ## 🎯 Objetivos
 
