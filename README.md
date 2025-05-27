@@ -243,11 +243,18 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 - [Portal da Transparência](https://www.portaldatransparencia.gov.br/) pela disponibilização dos dados
 - Comunidade open source pelos pacotes utilizados
 
-## 📧 Contato
+## 👨‍💻 Autor
 
-Anderson Henrique - [@anderson-ufrj](https://github.com/anderson-ufrj)
+**Anderson Henrique Silva**
 
-Link do Projeto: [https://github.com/anderson-ufrj/TransparenciaBR-Analytics](https://github.com/anderson-ufrj/TransparenciaBR-Analytics)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anderson-h-silva95/)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/anderson-ufrj)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:andersonhs90@hotmail.com)
+
+**🔗 Links do Projeto:**
+- 🌐 [Repositório GitHub](https://github.com/anderson-ufrj/TransparenciaBR-Analytics)
+- 📊 [Dashboard Demo](https://github.com/anderson-ufrj/TransparenciaBR-Analytics#dashboard)
+- 📚 [Documentação Completa](https://github.com/anderson-ufrj/TransparenciaBR-Analytics/tree/main/docs)
 
 ---
 
