@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TransparenciaBR Analytics - Análise de Dados Públicos</title>
+    <meta name="description" content="Plataforma de análise inteligente de dados do Portal da Transparência do Governo Federal Brasileiro">
+    
+    <!-- Redirecionar automaticamente para o dashboard (descomente quando tiver o link) -->
+    <!-- <meta http-equiv="refresh" content="3; url=https://transparenciabr-analytics.streamlit.app/"> -->
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="TransparenciaBR Analytics">
+    <meta property="og:description" content="Análise inteligente de dados públicos do Portal da Transparência">
+    <meta property="og:image" content="https://raw.githubusercontent.com/anderson-ufrj/TransparenciaBR-Analytics/main/src/images/bandeira-brasil.png">
+    <meta property="og:url" content="https://anderson-ufrj.github.io/TransparenciaBR-Analytics/">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1F2937;
+            background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 50%, #F0F9FF 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .flag {
+            width: 120px;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #047857;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+        }
+        
+        .subtitle {
+            color: #059669;
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 30px;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(5, 150, 105, 0.3);
+        }
+        
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(5, 150, 105, 0.4);
+        }
+        
+        .button.secondary {
+            background: white;
+            color: #047857;
+            border: 2px solid #047857;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+        
+        .button.secondary:hover {
+            background: #F0FDF4;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .feature {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .feature h3 {
+            color: #047857;
+            margin-bottom: 10px;
+        }
+        
+        .feature p {
+            color: #6B7280;
+        }
+        
+        .tech-stack {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .tech-stack h2 {
+            color: #047857;
+            margin-bottom: 20px;
+        }
+        
+        .tech-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .badge {
+            padding: 8px 16px;
+            background: #E5F3FF;
+            color: #065F46;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #6B7280;
+        }
+        
+        footer a {
+            color: #047857;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #047857;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="https://raw.githubusercontent.com/anderson-ufrj/TransparenciaBR-Analytics/main/src/images/bandeira-brasil.png" 
+                 alt="Bandeira do Brasil" class="flag">
+            <h1>TransparenciaBR Analytics</h1>
+            <p class="subtitle">Análise inteligente de dados públicos do Portal da Transparência</p>
+            
+            <div class="buttons">
+                <a href="#" class="button" onclick="alert('O dashboard será hospedado em breve no Streamlit Cloud!')">
+                    🚀 Acessar Dashboard
+                    <!-- <span class="loading"></span> -->
+                </a>
+                <a href="https://github.com/anderson-ufrj/TransparenciaBR-Analytics" class="button secondary">
+                    📂 Ver no GitHub
+                </a>
+            </div>
+        </header>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">📊</div>
+                <h3>Visualizações Interativas</h3>
+                <p>Dashboards dinâmicos com gráficos e análises em tempo real dos gastos públicos</p>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">🤖</div>
+                <h3>Machine Learning</h3>
+                <p>Detecção automática de anomalias e padrões suspeitos em contratos e licitações</p>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">🔍</div>
+                <h3>Transparência Total</h3>
+                <p>Acesso facilitado a dados de gastos, contratos, fornecedores e órgãos públicos</p>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">📈</div>
+                <h3>Análises Avançadas</h3>
+                <p>Relatórios detalhados e insights sobre o uso de recursos públicos</p>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">🚨</div>
+                <h3>Alertas Inteligentes</h3>
+                <p>Notificações sobre contratos vencendo, valores atípicos e irregularidades</p>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">📱</div>
+                <h3>Acesso Universal</h3>
+                <p>Interface responsiva acessível de qualquer dispositivo, em qualquer lugar</p>
+            </div>
+        </div>
+        
+        <div class="tech-stack">
+            <h2>🛠️ Tecnologias Utilizadas</h2>
+            <div class="tech-badges">
+                <span class="badge">Python 3.8+</span>
+                <span class="badge">Streamlit</span>
+                <span class="badge">Pandas</span>
+                <span class="badge">Plotly</span>
+                <span class="badge">Machine Learning</span>
+                <span class="badge">API REST</span>
+                <span class="badge">Docker</span>
+                <span class="badge">CI/CD</span>
+            </div>
+        </div>
+        
+        <footer>
+            <p>
+                Desenvolvido por <a href="https://www.linkedin.com/in/anderson-h-silva95/" target="_blank">Anderson Henrique Silva</a>
+            </p>
+            <p>
+                <a href="https://github.com/anderson-ufrj/TransparenciaBR-Analytics">GitHub</a> | 
+                <a href="https://github.com/anderson-ufrj/TransparenciaBR-Analytics/tree/main/docs">Documentação</a> | 
+                <a href="https://api.portaldatransparencia.gov.br/">API Portal da Transparência</a>
+            </p>
+            <p style="margin-top: 20px;">
+                🇧🇷 Feito com ❤️ para aumentar a transparência pública no Brasil
+            </p>
+        </footer>
+    </div>
+    
+    <script>
+        // Adicione aqui o link do Streamlit quando estiver pronto
+        const streamlitUrl = ''; // 'https://transparenciabr-analytics.streamlit.app/'
+        
+        if (streamlitUrl) {
+            // Redirecionar após 3 segundos
+            setTimeout(() => {
+                window.location.href = streamlitUrl;
+            }, 3000);
+            
+            // Mostrar loading
+            document.querySelector('.loading').style.display = 'inline-block';
+        }
+    </script>
+</body>
+</html>
