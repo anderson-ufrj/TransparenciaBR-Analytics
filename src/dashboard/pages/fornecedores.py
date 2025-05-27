@@ -1,4 +1,4 @@
-"""Página de fornecedores - versão simplificada."""
+"""Página de fornecedores - versão corrigida."""
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -79,39 +79,61 @@ def render_fornecedores_page():
     ])
     
     with tab1:
-        st.subheader("Top 10 Fornecedores por Volume")
+        st.subheader("Top 15 Fornecedores por Volume Contratado")
         
-        # Dados simulados
+        # Dados simulados - corrigidos
         fornecedores_data = pd.DataFrame({
-            'Fornecedor': ['Tech Solutions Ltda', 'Construtora ABC', 'Medical Supplies', 
-                          'InfoSystems S.A.', 'Logística Express', 'Energia Solar Brasil',
-                          'Alimentos Premium', 'Segurança Total', 'Telecom Plus', 'Consultoria XYZ'],
-            'Valor Total (R$ Mi)': [125.3, 98.7, 87.5, 76.2, 65.8, 54.3, 48.9, 42.1, 38.7, 35.2],
-            'Contratos': [45, 38, 52, 31, 28, 24, 35, 19, 22, 18],
-            'Score': [95, 92, 88, 85, 91, 87, 83, 90, 86, 89]
+            'Fornecedor': [
+                'Tech Solutions Brasil Ltda', 'Construtora Alpha S.A.', 'MedSupply Comércio',
+                'Serviços Beta EIRELI', 'Gamma Tecnologia', 'Delta Consultoria',
+                'Epsilon Logística', 'Zeta Engenharia', 'Eta Manutenção',
+                'Theta Sistemas', 'Iota Transportes', 'Kappa Alimentos',
+                'Lambda Segurança', 'Mu Telecom', 'Nu Energia'
+            ],
+            'CNPJ': [
+                '12.345.678/0001-00', '23.456.789/0001-00', '34.567.890/0001-00',
+                '45.678.901/0001-00', '56.789.012/0001-00', '67.890.123/0001-00',
+                '78.901.234/0001-00', '89.012.345/0001-00', '90.123.456/0001-00',
+                '01.234.567/0001-00', '12.345.678/0001-00', '23.456.789/0001-00',
+                '34.567.890/0001-00', '45.678.901/0001-00', '56.789.012/0001-00'
+            ],
+            'Valor Total (R$ Mi)': [125.3, 98.7, 87.5, 76.2, 65.8, 54.3, 48.9, 42.1, 38.7, 35.2, 31.8, 28.4, 25.9, 23.1, 20.5],
+            'Contratos': [45, 38, 52, 31, 28, 24, 35, 19, 22, 18, 27, 15, 20, 12, 16],
+            'Score': [95, 92, 88, 85, 91, 87, 83, 90, 86, 89, 82, 84, 81, 79, 77]
         })
         
         # Gráfico de barras horizontais
-        fig_ranking = px.bar(fornecedores_data, 
+        fig_ranking = px.bar(fornecedores_data.head(10), 
                            x='Valor Total (R$ Mi)', 
                            y='Fornecedor',
                            orientation='h',
                            color='Valor Total (R$ Mi)',
                            color_continuous_scale='Greens',
-                           title='Ranking de Fornecedores por Valor Contratado')
+                           title='Top 10 Fornecedores por Valor Contratado',
+                           text='Valor Total (R$ Mi)')
         
+        fig_ranking.update_traces(texttemplate='R$ %{text:.1f}M', textposition='outside')
         fig_ranking.update_layout(
             xaxis_title='Valor Total (R$ Milhões)',
             yaxis_title='',
             height=500,
-            showlegend=False
+            showlegend=False,
+            yaxis={'categoryorder':'total ascending'}
         )
         
         st.plotly_chart(fig_ranking, use_container_width=True)
         
         # Tabela detalhada
-        st.markdown("### 📋 Detalhamento")
-        st.dataframe(fornecedores_data, use_container_width=True, hide_index=True)
+        st.markdown("### 📋 Detalhamento dos Top 15 Fornecedores")
+        
+        # Adicionar colunas de status
+        fornecedores_data['Status'] = ['🟢 Regular' if score >= 85 else '🟡 Atenção' if score >= 75 else '🔴 Irregular' 
+                                      for score in fornecedores_data['Score']]
+        fornecedores_data['Ranking'] = range(1, len(fornecedores_data) + 1)
+        
+        # Reorganizar colunas
+        cols_order = ['Ranking', 'Fornecedor', 'CNPJ', 'Valor Total (R$ Mi)', 'Contratos', 'Score', 'Status']
+        st.dataframe(fornecedores_data[cols_order], use_container_width=True, hide_index=True)
     
     with tab2:
         st.subheader("Distribuição de Fornecedores")
@@ -140,7 +162,10 @@ def render_fornecedores_page():
             fig_setor = px.bar(setor_data, x='Setor', y='Percentual',
                              title='Distribuição por Setor (%)',
                              color='Percentual',
-                             color_continuous_scale='Greens')
+                             color_continuous_scale='Greens',
+                             text='Percentual')
+            fig_setor.update_traces(texttemplate='%{text}%', textposition='outside')
+            fig_setor.update_layout(showlegend=False)
             st.plotly_chart(fig_setor, use_container_width=True)
     
     with tab3:
@@ -215,12 +240,15 @@ def render_fornecedores_page():
                             hover_data=['Estado'],
                             title='Fornecedores por Estado',
                             color_continuous_scale='Greens',
-                            labels={'Fornecedores': 'Número de Fornecedores'})
+                            labels={'Fornecedores': 'Número de Fornecedores'},
+                            text='Estado')
         
+        fig_mapa.update_traces(textposition='top center')
         st.plotly_chart(fig_mapa, use_container_width=True)
         
         # Tabela
         st.markdown("### 📊 Detalhamento por Estado")
+        estados_data['Valor Médio (R$ Mi)'] = (estados_data['Valor (R$ Mi)'] / estados_data['Fornecedores']).round(2)
         st.dataframe(estados_data, use_container_width=True, hide_index=True)
     
     with tab5:
