@@ -204,26 +204,221 @@ with st.sidebar:
     </div>
     """, unsafe_allow_html=True)
     
-    st.markdown("## 📊 Navegação")
+    # Menu de navegação customizado
+    st.markdown("""
+    <style>
+        /* Estilo do menu customizado */
+        .menu-title {
+            color: #047857;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 100%);
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #D1FAE5;
+        }
+        
+        .menu-item {
+            background: #FFFFFF;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #374151;
+        }
+        
+        .menu-item:hover {
+            background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 100%);
+            border-color: #047857;
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(4, 120, 87, 0.2);
+        }
+        
+        .menu-item.active {
+            background: linear-gradient(135deg, #047857 0%, #059669 100%);
+            color: white;
+            border-color: #047857;
+            box-shadow: 0 4px 16px rgba(4, 120, 87, 0.3);
+        }
+        
+        .menu-icon {
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #F3F4F6;
+            border-radius: 10px;
+        }
+        
+        .menu-item.active .menu-icon {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .menu-text {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .menu-description {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            margin-top: 2px;
+        }
+        
+        .menu-section {
+            margin-bottom: 30px;
+        }
+        
+        .menu-section-title {
+            color: #6B7280;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin: 20px 0 12px 8px;
+        }
+    </style>
+    """, unsafe_allow_html=True)
     
-    # Menu de navegação
-    page = st.selectbox(
-        "Selecione uma página",
-        [
-            "🏠 Início",
-            "📈 Análise de Gastos",
-            "🏢 Órgãos Públicos",
-            "📑 Contratos",
-            "💰 Pagamentos",
-            "🏆 Licitações",
-            "👥 Fornecedores",
-            "🔍 Detecção de Anomalias",
-            "📊 Monitor de Coleta",
-            "⚙️ Configurações"
-        ]
-    )
+    st.markdown('<div class="menu-title">📊 Painel de Navegação</div>', unsafe_allow_html=True)
+    
+    # Menu items com descrições
+    menu_options = {
+        "🏠 Início": {
+            "key": "home",
+            "desc": "Visão geral e métricas",
+            "section": "principal"
+        },
+        "📈 Análise de Gastos": {
+            "key": "gastos",
+            "desc": "Gastos por categoria e período",
+            "section": "principal"
+        },
+        "🏢 Órgãos Públicos": {
+            "key": "orgaos",
+            "desc": "Rankings e comparações",
+            "section": "principal"
+        },
+        "📑 Contratos": {
+            "key": "contratos",
+            "desc": "Gestão e análise de contratos",
+            "section": "gestao"
+        },
+        "💰 Pagamentos": {
+            "key": "pagamentos",
+            "desc": "Fluxo de pagamentos",
+            "section": "gestao"
+        },
+        "🏆 Licitações": {
+            "key": "licitacoes",
+            "desc": "Processos licitatórios",
+            "section": "gestao"
+        },
+        "👥 Fornecedores": {
+            "key": "fornecedores",
+            "desc": "Análise de fornecedores",
+            "section": "gestao"
+        },
+        "🔍 Detecção de Anomalias": {
+            "key": "anomalias",
+            "desc": "Machine Learning e alertas",
+            "section": "avancado"
+        },
+        "📊 Monitor de Coleta": {
+            "key": "monitor",
+            "desc": "Status do sistema",
+            "section": "avancado"
+        },
+        "⚙️ Configurações": {
+            "key": "configuracoes",
+            "desc": "Preferências e API",
+            "section": "avancado"
+        }
+    }
+    
+    # Agrupar por seções
+    sections = {
+        "principal": "Dashboard Principal",
+        "gestao": "Gestão e Controle",
+        "avancado": "Recursos Avançados"
+    }
+    
+    # Inicializar página no session state
+    if 'current_page' not in st.session_state:
+        st.session_state.current_page = "🏠 Início"
+    
+    # Renderizar menu por seções
+    for section_key, section_title in sections.items():
+        st.markdown(f'<div class="menu-section-title">{section_title}</div>', unsafe_allow_html=True)
+        
+        for option, details in menu_options.items():
+            if details["section"] == section_key:
+                # Estilo do botão baseado na página ativa
+                button_type = "primary" if st.session_state.current_page == option else "secondary"
+                
+                if st.button(
+                    option,
+                    key=details["key"],
+                    use_container_width=True,
+                    help=details["desc"],
+                    type=button_type
+                ):
+                    st.session_state.current_page = option
+                    st.rerun()
+    
+    page = st.session_state.current_page
     
     st.markdown("---")
+    
+    # Estatísticas visuais
+    st.markdown("""
+    <div style="background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 100%); 
+                padding: 20px; 
+                border-radius: 12px; 
+                border: 2px solid #D1FAE5;
+                margin-bottom: 20px;">
+        <h4 style="color: #047857; margin: 0 0 15px 0; font-size: 1.1rem;">📊 Estatísticas Rápidas</h4>
+        <div style="display: grid; gap: 10px;">
+            <div style="background: white; padding: 12px; border-radius: 8px; border: 1px solid #E5E7EB;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="color: #6B7280; font-size: 0.85rem;">Contratos Ativos</span>
+                    <span style="color: #047857; font-weight: 700; font-size: 1.2rem;">782</span>
+                </div>
+                <div style="background: #E5E7EB; height: 4px; border-radius: 2px; margin-top: 8px;">
+                    <div style="background: #047857; height: 100%; width: 78%; border-radius: 2px;"></div>
+                </div>
+            </div>
+            <div style="background: white; padding: 12px; border-radius: 8px; border: 1px solid #E5E7EB;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="color: #6B7280; font-size: 0.85rem;">Taxa de Análise</span>
+                    <span style="color: #F59E0B; font-weight: 700; font-size: 1.2rem;">94%</span>
+                </div>
+                <div style="background: #E5E7EB; height: 4px; border-radius: 2px; margin-top: 8px;">
+                    <div style="background: #F59E0B; height: 100%; width: 94%; border-radius: 2px;"></div>
+                </div>
+            </div>
+            <div style="background: white; padding: 12px; border-radius: 8px; border: 1px solid #E5E7EB;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="color: #6B7280; font-size: 0.85rem;">Alertas Hoje</span>
+                    <span style="color: #EF4444; font-weight: 700; font-size: 1.2rem;">23</span>
+                </div>
+                <div style="background: #E5E7EB; height: 4px; border-radius: 2px; margin-top: 8px;">
+                    <div style="background: #EF4444; height: 100%; width: 23%; border-radius: 2px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
     
     # Informações do sistema
     st.markdown("### 💡 Status do Sistema")
@@ -251,10 +446,67 @@ with st.sidebar:
     
     st.markdown("---")
     
-    # Links úteis
-    st.markdown("### 🔗 Links Úteis")
-    st.markdown("[![GitHub](https://img.shields.io/badge/GitHub-Repository-black)](https://github.com/anderson-ufrj/TransparenciaBR-Analytics)")
-    st.markdown("[![API](https://img.shields.io/badge/API-Portal%20da%20Transparência-blue)](https://api.portaldatransparencia.gov.br/)")
+    # Links úteis com design melhorado
+    st.markdown("""
+    <div style="background: #F8FAFC; padding: 20px; border-radius: 12px; border: 1px solid #E5E7EB;">
+        <h4 style="color: #374151; margin: 0 0 15px 0; font-size: 1rem;">🔗 Links Rápidos</h4>
+        <div style="display: grid; gap: 10px;">
+            <a href="https://github.com/anderson-ufrj/TransparenciaBR-Analytics" target="_blank" 
+               style="background: white; padding: 12px; border-radius: 8px; border: 1px solid #E5E7EB;
+                      text-decoration: none; color: #374151; display: flex; align-items: center; gap: 10px;
+                      transition: all 0.2s; cursor: pointer;"
+               onmouseover="this.style.borderColor='#047857'; this.style.transform='translateX(2px)'"
+               onmouseout="this.style.borderColor='#E5E7EB'; this.style.transform='translateX(0)'">
+                <span style="font-size: 1.2rem;">💻</span>
+                <div>
+                    <div style="font-weight: 600; font-size: 0.9rem;">Código Fonte</div>
+                    <div style="font-size: 0.75rem; color: #6B7280;">GitHub Repository</div>
+                </div>
+            </a>
+            <a href="https://api.portaldatransparencia.gov.br/" target="_blank"
+               style="background: white; padding: 12px; border-radius: 8px; border: 1px solid #E5E7EB;
+                      text-decoration: none; color: #374151; display: flex; align-items: center; gap: 10px;
+                      transition: all 0.2s; cursor: pointer;"
+               onmouseover="this.style.borderColor='#047857'; this.style.transform='translateX(2px)'"
+               onmouseout="this.style.borderColor='#E5E7EB'; this.style.transform='translateX(0)'">
+                <span style="font-size: 1.2rem;">🌐</span>
+                <div>
+                    <div style="font-weight: 600; font-size: 0.9rem;">Portal da Transparência</div>
+                    <div style="font-size: 0.75rem; color: #6B7280;">Fonte de Dados</div>
+                </div>
+            </a>
+            <a href="https://anderson-ufrj.github.io/TransparenciaBR-Analytics/" target="_blank"
+               style="background: white; padding: 12px; border-radius: 8px; border: 1px solid #E5E7EB;
+                      text-decoration: none; color: #374151; display: flex; align-items: center; gap: 10px;
+                      transition: all 0.2s; cursor: pointer;"
+               onmouseover="this.style.borderColor='#047857'; this.style.transform='translateX(2px)'"
+               onmouseout="this.style.borderColor='#E5E7EB'; this.style.transform='translateX(0)'">
+                <span style="font-size: 1.2rem;">📚</span>
+                <div>
+                    <div style="font-weight: 600; font-size: 0.9rem;">Documentação</div>
+                    <div style="font-size: 0.75rem; color: #6B7280;">Guias e Tutoriais</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Footer do sidebar
+    st.markdown("""
+    <div style="margin-top: 30px; padding: 20px; background: linear-gradient(135deg, #064E3B 0%, #047857 100%); 
+                border-radius: 12px; text-align: center;">
+        <div style="color: white; font-size: 0.8rem; opacity: 0.9;">
+            Desenvolvido por
+        </div>
+        <a href="https://www.linkedin.com/in/anderson-h-silva95/" target="_blank"
+           style="color: white; font-weight: 700; text-decoration: none; font-size: 0.95rem;">
+            Anderson H. Silva
+        </a>
+        <div style="color: white; font-size: 0.75rem; margin-top: 8px; opacity: 0.8;">
+            © 2025 - Licença Proprietária
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
 # Conteúdo principal baseado na página selecionada
 if page == "🏠 Início":
