@@ -6,8 +6,8 @@
     <title>TransparenciaBR Analytics - Análise de Dados Públicos</title>
     <meta name="description" content="Plataforma de análise inteligente de dados do Portal da Transparência do Governo Federal Brasileiro">
     
-    <!-- Redirecionar automaticamente para o dashboard -->
-    <meta http-equiv="refresh" content="3; url=https://transparenciabr-anderson.streamlit.app/">
+    <!-- Removido redirecionamento automático para melhor experiência -->
+    <!-- <meta http-equiv="refresh" content="3; url=https://transparenciabr-anderson.streamlit.app/"> -->
     
     <!-- Open Graph / Social Media -->
     <meta property="og:title" content="TransparenciaBR Analytics">
@@ -232,12 +232,14 @@
             <p class="subtitle">Análise inteligente de dados públicos do Portal da Transparência</p>
             
             <div class="buttons">
-                <a href="https://transparenciabr-anderson.streamlit.app/" class="button">
-                    🚀 Acessar Dashboard
-                    <span class="loading"></span>
+                <a href="https://transparenciabr-anderson.streamlit.app/" class="button" target="_blank">
+                    🚀 Demo Online
                 </a>
                 <a href="https://github.com/anderson-ufrj/TransparenciaBR-Analytics" class="button secondary">
-                    📂 Ver no GitHub
+                    📂 Código Fonte
+                </a>
+                <a href="https://github.com/anderson-ufrj/TransparenciaBR-Analytics/tree/main/docs" class="button secondary">
+                    📚 Documentação
                 </a>
             </div>
         </header>
@@ -294,6 +296,53 @@
             </div>
         </div>
         
+        <div style="background: white; padding: 40px; border-radius: 16px; margin: 40px 0; box-shadow: 0 4px 16px rgba(0,0,0,0.08);">
+            <h2 style="color: #047857; text-align: center; margin-bottom: 30px;">📸 Screenshots do Dashboard</h2>
+            <div style="text-align: center;">
+                <p style="color: #6B7280; margin-bottom: 20px;">
+                    O dashboard oferece visualizações interativas e análises em tempo real dos dados públicos.
+                </p>
+                <div class="buttons" style="justify-content: center;">
+                    <a href="https://transparenciabr-anderson.streamlit.app/" class="button" target="_blank">
+                        👁️ Ver Demo Ao Vivo
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div style="background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 100%); padding: 40px; border-radius: 16px; margin: 40px 0; border: 2px solid #D1FAE5;">
+            <h2 style="color: #047857; text-align: center; margin-bottom: 30px;">⚠️ Licença e Uso</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <p style="color: #065F46; text-align: center; font-weight: 500; margin-bottom: 20px;">
+                    Este projeto está sob Licença de Uso Restrito (Proprietária)
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #A7F3D0;">
+                        <h3 style="color: #047857; margin-bottom: 10px;">✅ Uso Permitido</h3>
+                        <ul style="color: #065F46; margin: 0; padding-left: 20px;">
+                            <li>Visualização para avaliação técnica</li>
+                            <li>Execução local para testes</li>
+                            <li>Referência em portfolio</li>
+                            <li>Avaliação por recrutadores</li>
+                        </ul>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #FCA5A5;">
+                        <h3 style="color: #DC2626; margin-bottom: 10px;">❌ Uso Restrito</h3>
+                        <ul style="color: #991B1B; margin: 0; padding-left: 20px;">
+                            <li>Uso comercial sem autorização</li>
+                            <li>Redistribuição do código</li>
+                            <li>Criação de derivados</li>
+                            <li>Modificação sem permissão</li>
+                        </ul>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 20px; color: #6B7280;">
+                    Para permissões comerciais: 
+                    <a href="mailto:andersonhs90@hotmail.com" style="color: #047857;">andersonhs90@hotmail.com</a>
+                </p>
+            </div>
+        </div>
+        
         <footer>
             <p>
                 Desenvolvido por <a href="https://www.linkedin.com/in/anderson-h-silva95/" target="_blank">Anderson Henrique Silva</a>
@@ -310,20 +359,28 @@
     </div>
     
     <script>
-        // Link do dashboard no Streamlit
-        const streamlitUrl = 'https://transparenciabr-anderson.streamlit.app/';
-        
-        // Mostrar indicador de carregamento
+        // Analytics e interações
         document.addEventListener('DOMContentLoaded', function() {
-            const loadingElements = document.querySelectorAll('.loading');
-            loadingElements.forEach(el => el.style.display = 'inline-block');
+            // Smooth scroll para âncoras
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
             
-            // Adicionar mensagem de redirecionamento
-            const header = document.querySelector('header');
-            const redirectMsg = document.createElement('p');
-            redirectMsg.style.cssText = 'margin-top: 20px; color: #059669; font-weight: 500;';
-            redirectMsg.innerHTML = '🔄 Redirecionando para o dashboard em 3 segundos...';
-            header.appendChild(redirectMsg);
+            // Adicionar efeito de hover nas features
+            const features = document.querySelectorAll('.feature');
+            features.forEach(feature => {
+                feature.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                feature.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(-5px) scale(1)';
+                });
+            });
         });
     </script>
 </body>
