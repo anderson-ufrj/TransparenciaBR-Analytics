@@ -38,30 +38,31 @@ st.markdown("""
     
     /* Sidebar estilizada */
     .css-1d391kg {
-        background-color: #FFFFFF;
-        border-right: 2px solid #E5E7EB;
+        background-color: #F8FAFC;
+        border-right: 3px solid #D1D5DB;
     }
     
     /* Métricas com cores do Brasil */
     div[data-testid="metric-container"] {
         background: #FFFFFF;
-        border: 2px solid #E5E7EB;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        border: 2px solid #D1D5DB;
+        padding: 24px;
+        border-radius: 16px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
         transition: all 0.3s ease;
     }
     
     div[data-testid="metric-container"]:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-        border-color: #059669;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+        border-color: #047857;
     }
     
     /* Títulos verdes */
     h1, h2, h3 {
-        color: #065F46;
-        font-weight: 600;
+        color: #064E3B;
+        font-weight: 700;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     }
     
     /* Botões estilo Brasil */
@@ -90,16 +91,14 @@ st.markdown("""
         margin-bottom: 20px;
     }
     
-    /* Bandeira do Brasil como background sutil */
+    /* Header com gradiente brasileiro */
     .brazil-bg {
-        background-image: 
-            linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)),
-            url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/2560px-Flag_of_Brazil.svg.png');
-        background-size: cover;
-        background-position: center;
+        background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 50%, #F0F9FF 100%);
+        border: 2px solid #D1FAE5;
         padding: 40px;
         border-radius: 20px;
         margin-bottom: 30px;
+        box-shadow: 0 8px 32px rgba(4, 120, 87, 0.1);
     }
     
     /* Alertas customizados */
@@ -157,12 +156,14 @@ st.markdown("""
 # Header com bandeira do Brasil
 st.markdown("""
 <div class="brazil-bg">
-    <div style="display: flex; align-items: center; gap: 20px;">
+    <div style="display: flex; align-items: center; gap: 24px;">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/640px-Flag_of_Brazil.svg.png" 
-             width="100" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+             width="120" style="border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.15); border: 2px solid #FFFFFF;">
         <div>
-            <h1 style="margin: 0; color: #047857; font-size: 2.5rem;">TransparenciaBR Analytics</h1>
-            <p style="margin: 0; color: #059669; font-size: 1.2rem; font-weight: 500;">
+            <h1 style="margin: 0; color: #064E3B; font-size: 2.8rem; font-weight: 800; letter-spacing: -0.02em;">
+                TransparenciaBR Analytics
+            </h1>
+            <p style="margin: 8px 0 0 0; color: #047857; font-size: 1.3rem; font-weight: 600;">
                 Análise inteligente de dados públicos do Portal da Transparência
             </p>
         </div>
@@ -174,10 +175,12 @@ st.markdown("""
 with st.sidebar:
     # Imagem de Brasília
     st.markdown("""
-    <div style="text-align: center; margin-bottom: 20px;">
-        <img src="https://images.unsplash.com/photo-1544966503-7adceed8c9d4?w=640&h=400&fit=crop&crop=center" 
-             width="100%" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-        <p style="margin-top: 8px; color: #6B7280; font-size: 0.875rem;">Congresso Nacional - Brasília</p>
+    <div style="text-align: center; margin-bottom: 24px; padding: 12px; background: #F8FAFC; border-radius: 16px; border: 1px solid #E5E7EB;">
+        <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=600&h=350&fit=crop&crop=center" 
+             width="100%" style="border-radius: 12px; box-shadow: 0 6px 16px rgba(0,0,0,0.15);">
+        <p style="margin-top: 12px; color: #374151; font-size: 0.875rem; font-weight: 600;">
+            🏛️ Congresso Nacional - Brasília
+        </p>
     </div>
     """, unsafe_allow_html=True)
     
