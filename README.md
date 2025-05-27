@@ -6,7 +6,7 @@
 [![Basic Validation](https://github.com/anderson-ufrj/TransparenciaBR-Analytics/actions/workflows/basic-validation.yml/badge.svg)](https://github.com/anderson-ufrj/TransparenciaBR-Analytics/actions/workflows/basic-validation.yml)
 [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red.svg)](./LICENSE)
 [![API](https://img.shields.io/badge/API-Portal%20da%20Transparência-orange.svg)](https://api.portaldatransparencia.gov.br/)
 [![GitHub last commit](https://img.shields.io/github/last-commit/anderson-ufrj/TransparenciaBR-Analytics)](https://github.com/anderson-ufrj/TransparenciaBR-Analytics/commits/main)
 [![GitHub issues](https://img.shields.io/github/issues/anderson-ufrj/TransparenciaBR-Analytics)](https://github.com/anderson-ufrj/TransparenciaBR-Analytics/issues)
@@ -238,7 +238,23 @@ anomalias = detector.detect_payment_anomalies(df_pagamentos)
 
 ## 📝 Licença
 
-Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
+⚠️ **AVISO IMPORTANTE**: Este projeto está sob **Licença de Uso Restrito** (proprietária).
+
+### Uso Permitido ✅
+- Visualização do código para avaliação técnica
+- Execução local para testes e demonstração
+- Referência em portfolio profissional
+- Avaliação por recrutadores
+
+### Uso NÃO Permitido ❌
+- Uso comercial sem autorização
+- Redistribuição do código
+- Criação de trabalhos derivados
+- Modificação sem permissão
+
+Para detalhes completos, consulte o arquivo [LICENSE](LICENSE).
+
+Para permissões comerciais ou dúvidas: andersonhs90@hotmail.com
 
 ## 🙏 Agradecimentos
 

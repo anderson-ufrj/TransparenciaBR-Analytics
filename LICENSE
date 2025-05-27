@@ -1,21 +1,62 @@
-MIT License
+TransparenciaBR Analytics - Licença de Uso Restrito
 
-Copyright (c) 2025 Anderson Henrique
+Copyright (c) 2025 Anderson Henrique Silva
+Todos os direitos reservados.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+AVISO IMPORTANTE: Este software estava anteriormente licenciado sob MIT License.
+A partir de 27 de maio de 2025, o licenciamento foi alterado para proteção proprietária.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+## TERMOS DE USO
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+### 1. CONCESSÃO DE LICENÇA LIMITADA
+Este software é disponibilizado APENAS para:
+- Visualização e avaliação do código
+- Execução local para fins de teste e demonstração
+- Uso como referência em portfolio profissional
+- Avaliação por recrutadores e potenciais empregadores
+
+### 2. RESTRIÇÕES
+É expressamente PROIBIDO sem autorização prévia por escrito:
+- Uso comercial de qualquer natureza
+- Redistribuição do código, parcial ou total
+- Criação de trabalhos derivados
+- Modificação do código-fonte
+- Deploy em ambientes de produção
+- Sublicenciamento
+- Venda ou transferência de direitos
+
+### 3. PROPRIEDADE INTELECTUAL
+Todo o código, documentação, design e conceitos permanecem propriedade
+exclusiva de Anderson Henrique Silva.
+
+### 4. ATRIBUIÇÃO OBRIGATÓRIA
+Qualquer uso permitido deve incluir:
+- Crédito claro ao autor: Anderson Henrique Silva
+- Link para LinkedIn: https://www.linkedin.com/in/anderson-h-silva95/
+- Referência ao repositório original
+
+### 5. DADOS E PRIVACIDADE
+Este software acessa dados públicos do Portal da Transparência.
+O uso deve respeitar os termos de uso da API do Portal da Transparência.
+
+### 6. ISENÇÃO DE GARANTIAS
+O SOFTWARE É FORNECIDO "COMO ESTÁ", SEM GARANTIA DE QUALQUER TIPO,
+EXPRESSA OU IMPLÍCITA.
+
+### 7. LIMITAÇÃO DE RESPONSABILIDADE
+EM NENHUMA CIRCUNSTÂNCIA O AUTOR SERÁ RESPONSÁVEL POR QUAISQUER DANOS
+DECORRENTES DO USO OU INCAPACIDADE DE USO DO SOFTWARE.
+
+### 8. CONTATO PARA PERMISSÕES
+Para solicitar permissões adicionais ou uso comercial:
+- Email: andersonhs90@hotmail.com
+- LinkedIn: https://www.linkedin.com/in/anderson-h-silva95/
+
+### 9. EXECUÇÃO
+Esta licença é regida pelas leis do Brasil.
+Qualquer disputa será resolvida nos tribunais do Rio de Janeiro, RJ.
+
+---
+
+Data de vigência: 27 de maio de 2025
+Última atualização: 27 de maio de 2025
